@@ -69,49 +69,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Discipline.cs" />
+    <Compile Include="DisciplineRepository.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestingSystemModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TestingSystemModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TestingSystemModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TestingSystemModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TestingSystemModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TestingSystemModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="user.cs">
-      <DependentUpon>TestingSystemModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Question.cs" />
+    <Compile Include="QuestionRepository.cs" />
+    <Compile Include="Test.cs" />
+    <Compile Include="TestingSystemModel.cs" />
+    <Compile Include="TestingSystemRepository.cs" />
+    <Compile Include="TestRepository.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="TestingSystemModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TestingSystemModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="TestingSystemModel.edmx.diagram">
-      <DependentUpon>TestingSystemModel.edmx</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TestingSystemModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TestingSystemModel.edmx</DependentUpon>
-      <LastGenOutput>TestingSystemModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="TestingSystemModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TestingSystemModel.edmx</DependentUpon>
-      <LastGenOutput>TestingSystemModel.cs</LastGenOutput>
-    </Content>
+    <Content Include="Scripts\create_tables.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

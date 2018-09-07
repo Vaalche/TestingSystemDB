@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestingSystemDB
 {
-    class Program
+    class DisciplineRepository : TestingSystemRepository<TestingSystemModel, Discipline>
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }
