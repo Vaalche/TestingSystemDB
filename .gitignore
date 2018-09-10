@@ -181,3 +181,5 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+/.vs/TestingSystemDB/v15/Server/sqlite3
+/KursovProektPS/.vs/KursovProektPS/v15/Server/sqlite3
