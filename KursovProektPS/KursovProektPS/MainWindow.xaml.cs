@@ -20,9 +20,12 @@ namespace KursovProektPS
     /// </summary>
     public partial class MainWindow : Window
     {
+        LoginVM vm;
         public MainWindow()
         {
             InitializeComponent();
+
+            vm = new LoginVM();
         }
     }
 }

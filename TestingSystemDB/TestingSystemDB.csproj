@@ -76,6 +76,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="QuestionRepository.cs" />
+    <Compile Include="RepositoryFactory.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="TestingSystemModel.cs" />
     <Compile Include="TestingSystemRepository.cs" />
