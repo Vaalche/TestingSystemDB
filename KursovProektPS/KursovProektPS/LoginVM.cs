@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Navigation;
+using KursovProektPS.Views;
 
 namespace KursovProektPS
 {
@@ -14,10 +16,9 @@ namespace KursovProektPS
         public LoginVM()
         {
             LoginInfo = new LoginModel();
-            Login = new LoginCommand(l => AuthenticateUser(l));
+            Login = new CommandClass<LoginModel>(l => AuthenticateUser(l));
+
         }
-
-
 
         public LoginModel LoginInfo
         {
@@ -33,7 +34,7 @@ namespace KursovProektPS
             }
         }
 
-        public LoginCommand Login
+        public CommandClass<LoginModel> Login
         {
             get;
             set;
@@ -41,8 +42,8 @@ namespace KursovProektPS
 
         private bool AuthenticateUser(LoginModel loginInfo)
         {
+            TestSetup ts = new TestSetup();
             return true;
         }
-
     }
 }
