@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KursovProektPS
 {
-    public class PropertyChangedHandler : INotifyPropertyChanged
+    public class BaseVM : INotifyPropertyChanged
     {
         protected void RaisePropertyChanged(string propertyName)
         {

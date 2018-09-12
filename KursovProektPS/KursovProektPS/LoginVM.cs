@@ -9,15 +9,14 @@ using KursovProektPS.Views;
 
 namespace KursovProektPS
 {
-    public class LoginVM : PropertyChangedHandler
+    public class LoginVM : BaseVM
     {
+        private BaseVM _viewModel;
         private LoginModel _loginInfo;
 
         public LoginVM()
         {
             LoginInfo = new LoginModel();
-            Login = new CommandClass<LoginModel>(l => AuthenticateUser(l));
-
         }
 
         public LoginModel LoginInfo
@@ -38,12 +37,6 @@ namespace KursovProektPS
         {
             get;
             set;
-        }
-
-        private bool AuthenticateUser(LoginModel loginInfo)
-        {
-            TestSetup ts = new TestSetup();
-            return true;
         }
     }
 }

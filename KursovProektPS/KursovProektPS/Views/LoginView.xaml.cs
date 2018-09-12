@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace KursovProektPS.Views
 {
     /// <summary>
-    /// Interaction logic for Results.xaml
+    /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class Results : Page
+    public partial class LoginView : UserControl
     {
-        public Results()
+        public LoginView()
         {
             InitializeComponent();
         }

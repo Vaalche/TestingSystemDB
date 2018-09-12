@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:KursovProektPS"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Frame HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source ="/Views/TestSetup.xaml">
-    
-    </Frame>
+
+    <Grid>
+        <ContentControl Content="{Binding ViewModel}" />
+    </Grid>
 </Window>
