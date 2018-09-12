@@ -3,11 +3,11 @@ using System.Windows.Input;
 
 namespace KursovProektPS
 {
-    public class LoginCommand : ICommand
+    public class CommandClass<T> : ICommand where T : class
     {
-        private Action<LoginModel> _action;
+        private Action<T> _action;
 
-        public LoginCommand(Action<LoginModel> action)
+        public CommandClass(Action<T> action)
         {
             this._action = action;
         }
@@ -21,8 +21,8 @@ namespace KursovProektPS
 
         public void Execute(object parameter)
         {
-            var loginInfo = parameter as LoginModel;
-            _action(loginInfo);
+            var modelInfo = parameter as T;
+            _action(modelInfo);
         }
     }
 }
