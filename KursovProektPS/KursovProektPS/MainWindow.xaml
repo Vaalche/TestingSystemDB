@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:KursovProektPS"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Frame HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source ="/Views/Login.xaml">
+    <Frame HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source ="/Views/TestSetup.xaml">
     
     </Frame>
 </Window>

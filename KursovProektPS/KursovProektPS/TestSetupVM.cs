@@ -43,7 +43,7 @@ namespace KursovProektPS
         private List<string> PopulateComboBox()
         {
             //tuka she pulnim ot bazata list s disciplini 
-            return new List<string>();
+            return new List<string>() { "математика", "история", "биология", "литература" };
         }
     }
 }
