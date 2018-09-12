@@ -12,19 +12,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using KursovProektPS.Views;
 
-namespace KursovProektPS
+namespace KursovProektPS.Views
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for TestSetup.xaml
     /// </summary>
-    public partial class Login : Page
+    public partial class TestSetup : Page
     {
-        public Login()
+        public TestSetup()
         {
             InitializeComponent();
-            LoginVM vm = new LoginVM();
+            TestSetupModel ts = new TestSetupModel();
         }
     }
 }

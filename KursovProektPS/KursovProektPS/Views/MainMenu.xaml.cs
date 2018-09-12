@@ -12,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using KursovProektPS.Views;
 
-namespace KursovProektPS
+namespace KursovProektPS.Views
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for MainMenu.xaml
     /// </summary>
-    public partial class Login : Page
+    public partial class MainMenu : Page
     {
-        public Login()
+        public MainMenu()
         {
             InitializeComponent();
-            LoginVM vm = new LoginVM();
         }
     }
 }
