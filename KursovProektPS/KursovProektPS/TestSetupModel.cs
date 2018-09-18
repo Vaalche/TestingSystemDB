@@ -23,7 +23,7 @@ namespace KursovProektPS
             }
         }
         private string _selection;
-        private string Selection
+        public string Selection
         {
             get
             {

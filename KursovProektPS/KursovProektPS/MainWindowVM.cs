@@ -34,22 +34,32 @@ namespace KursovProektPS
         {
             get
             {
-                return new CommandClass<ResultsModel>(action => ViewModel = new ResultsVM());
+                return new RelayCommand(action => ViewModel = new ResultsVM());
             }
         }
 
+        public ICommand DisplayTestSetupView
+        {
+            get
+            {
+                return new RelayCommand(l => ViewModel = new AuthenticatorVM().Authenticate((LoginModel)l));
+            }
+        }
 
         public ICommand DisplayLoginView
         {
             get
             {
-                return new CommandClass<LoginModel>(action => ViewModel = new LoginVM(), () => true);
+                return new RelayCommand(action => ViewModel = new LoginVM());
             }
         }
 
-        private bool AuthenticateUser(LoginModel loginInfo)
+        public ICommand DisplayQuestionView
         {
-            return true;
+            get
+            {
+                return new RelayCommand(param => ViewModel = new QuestionVM(param));
+            }
         }
     }
 }

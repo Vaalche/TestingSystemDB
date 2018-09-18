@@ -11,12 +11,16 @@ namespace KursovProektPS
 {
     public class LoginVM : BaseVM
     {
-        private BaseVM _viewModel;
         private LoginModel _loginInfo;
 
         public LoginVM()
         {
             LoginInfo = new LoginModel();
+        }
+
+        public LoginVM(LoginModel loginInfo)
+        {
+            LoginInfo = loginInfo;
         }
 
         public LoginModel LoginInfo
@@ -31,12 +35,6 @@ namespace KursovProektPS
                 _loginInfo = value;
                 RaisePropertyChanged("LoginInfo");
             }
-        }
-
-        public CommandClass<LoginModel> Login
-        {
-            get;
-            set;
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KursovProektPS
 {
-    class TestSetupVM : PropertyChangedHandler
+    class TestSetupVM : BaseVM
     {
         private TestSetupModel _tSInfo;
         public TestSetupModel TSInfo
@@ -26,13 +26,6 @@ namespace KursovProektPS
         {
             TSInfo = new TestSetupModel();
             TSInfo.Disciplines = PopulateComboBox();
-            Confirm = new CommandClass<TestSetupModel>(a => ConfirmSelect(a));
-        }
-
-        public CommandClass<TestSetupModel> Confirm
-        {
-            get;
-            set;
         }
 
         private bool ConfirmSelect(TestSetupModel s)
