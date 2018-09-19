@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using TestingSystemDB;
 
 namespace KursovProektPS
 {
     public class MainWindowVM : BaseVM
     {
         private BaseVM _viewModel;
-
+        public static User CurrentUser { get; set; }
         public MainWindowVM()
         {
             ViewModel = new LoginVM();
@@ -34,7 +35,7 @@ namespace KursovProektPS
         {
             get
             {
-                return new RelayCommand(action => ViewModel = new ResultsVM());
+                return new RelayCommand(param => ViewModel = new ResultsVM((int) param));
             }
         }
 
@@ -42,7 +43,23 @@ namespace KursovProektPS
         {
             get
             {
-                return new RelayCommand(l => ViewModel = new AuthenticatorVM().Authenticate((LoginModel)l));
+                return new RelayCommand(param => ViewModel = new Authenticator().Authenticate((LoginModel)param));
+            }
+        }
+
+        public ICommand DisplayTestSetupViewNoLogin
+        {
+            get
+            {
+                return new RelayCommand(param => ViewModel = new TestSetupVM());
+            }
+        }
+        
+        public ICommand DisplayStatisticsView
+        {
+            get
+            {
+                return new RelayCommand(param => ViewModel = new StatisticsVM());
             }
         }
 
@@ -50,7 +67,7 @@ namespace KursovProektPS
         {
             get
             {
-                return new RelayCommand(action => ViewModel = new LoginVM());
+                return new RelayCommand(param => ViewModel = new LoginVM());
             }
         }
 
@@ -58,7 +75,7 @@ namespace KursovProektPS
         {
             get
             {
-                return new RelayCommand(param => ViewModel = new QuestionVM(param));
+                return new RelayCommand(param => ViewModel = new QuestionVM((TestSetupModel) param));
             }
         }
     }

@@ -6,22 +6,21 @@ using System.Threading.Tasks;
 
 namespace KursovProektPS
 {
-    class ResultsVM : BaseVM
+    public class ResultsVM : BaseVM
     {
-        private BaseVM _viewModel;
+        public static int TestScore { get; set; }
 
-        public BaseVM ViewModel
+
+        public ResultsVM()
         {
-            get
-            {
-                return _viewModel;
-            }
 
-            private set
-            {
-                this._viewModel = value;
-                RaisePropertyChanged("ViewModel");
-            }
         }
+
+        public ResultsVM(int testScore)
+        {
+            TestScore = testScore;
+        }
+
+
     }
 }

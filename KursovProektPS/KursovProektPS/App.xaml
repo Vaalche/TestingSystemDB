@@ -19,5 +19,8 @@
         <DataTemplate DataType="{x:Type local:QuestionVM}">
             <Views:QuestionView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type local:StatisticsVM}">
+            <Views:StatisticsView/>
+        </DataTemplate>
     </Application.Resources>	
 </Application>

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace KursovProektPS.Views
 {
     /// <summary>
-    /// Interaction logic for Question.xaml
+    /// Interaction logic for StatisticsView.xaml
     /// </summary>
-    public partial class Question : Page
+    public partial class StatisticsView : UserControl
     {
-        public Question()
+        public StatisticsView()
         {
             InitializeComponent();
         }

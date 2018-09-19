@@ -10,39 +10,32 @@ namespace TestingSystemDB
 {
     public abstract class TestingSystemRepository<C, T> : IRepository<T> where T : class where C : DbContext, new()
     {
-        private C context = new C();
-
-        public C Context
+        public void Add(T entity, DbContext ctx)
         {
-            get
-            {
-                return context;
-            }
+                ctx.Set<T>().Add(entity);
+                ctx.SaveChanges();
 
-            set
-            {
-                context = value;
-            }
-        }
-
-        public void Add(T entity)
-        {
-            Context.Set<T>().Add(entity);
         }
 
         public void Delete(T entity)
         {
-            Context.Set<T>().Remove(entity);
+            using (var ctx = new C())
+            {
+                ctx.Set<T>().Remove(entity);
+            }
         }
 
-        public IQueryable<T> FindBy(Expression<Func<T,bool>> predicate)
+        public IQueryable<T> FindBy(Expression<Func<T,bool>> predicate, DbContext ctx)
         {
-            return Context.Set<T>().Where(predicate); 
+                return ctx.Set<T>().Where(predicate);
         }
 
         public T FindById(int id)
         {
-            return Context.Set<T>().Find(id);
+            using (var ctx = new C())
+            {
+                return ctx.Set<T>().Find(id);
+            }
         }
 
         public void Update(T entity)

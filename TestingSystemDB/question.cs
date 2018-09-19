@@ -23,6 +23,18 @@ namespace TestingSystemDB
         [StringLength(255)]
         public string question_text { get; set; }
 
+        [Required]
+        [StringLength(100)]
+        public string correct_answer { get; set; }
+
+        [StringLength(100)]
+        public string incorrect_answer1 { get; set; }
+
+        [StringLength(100)]
+        public string incorrect_answer2 { get; set; }
+
+        public bool? is_free_text { get; set; }
+
         public virtual Discipline discipline { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

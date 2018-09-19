@@ -1,46 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel;
-using TestingSystemDB;
 
 namespace KursovProektPS
 {
-    public class TestSetupModel : INotifyPropertyChanged
+    public class StatisticsModel : INotifyPropertyChanged
     {
-        private List<Discipline> _disciplines;
-        public List<Discipline> Disciplines
+        private int testsCount;
+        private string mostTestedDiscipline;
+
+        public int TestsCount
         {
             get
             {
-                return _disciplines;
+                return testsCount;
             }
+
             set
             {
-                _disciplines = value;
-                RaisePropertyChanged("Disciplines");
+                testsCount = value;
+                RaisePropertyChanged("TestsCount");
             }
         }
-        private Discipline _selection;
-        public Discipline Selection
+
+        public string MostTestedDiscipline
         {
             get
             {
-                return _selection;
+                return mostTestedDiscipline;
             }
+
             set
             {
-                _selection = value;
-                RaisePropertyChanged("Selection");
+                mostTestedDiscipline = value;
+                RaisePropertyChanged("MostTestedDiscipline");
             }
         }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void RaisePropertyChanged(string propertyName)
         {
-            PropertyChangedEventHandler handler = PropertyChanged;
+            var handler = PropertyChanged;
+
             if (handler != null)
             {
                 handler(this, new PropertyChangedEventArgs(propertyName));

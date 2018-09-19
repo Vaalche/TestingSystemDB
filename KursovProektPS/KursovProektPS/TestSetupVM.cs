@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestingSystemDB;
 
 namespace KursovProektPS
 {
@@ -33,10 +34,14 @@ namespace KursovProektPS
             return true;
         }
 
-        private List<string> PopulateComboBox()
+        private List<Discipline> PopulateComboBox()
         {
-            //tuka she pulnim ot bazata list s disciplini 
-            return new List<string>() { "математика", "история", "биология", "литература" };
+            IRepository<Discipline> disciplineRepository = RepositoryFactory.Get<Discipline>();
+
+            using (var ctx = new TestingSystemModel())
+            {
+                return disciplineRepository.FindBy(discipline => true, ctx).ToList();
+            }
         }
     }
 }

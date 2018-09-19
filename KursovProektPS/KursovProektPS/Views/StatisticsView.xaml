@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="KursovProektPS.Views.StatisticsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KursovProektPS.Views"
+             xmlns:vm="clr-namespace:KursovProektPS"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    
+    <UserControl.DataContext>
+        <vm:StatisticsVM/>
+    </UserControl.DataContext>
+    
+    <Grid Name="statisticsGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Name="noOfTakenTests" Text="{Binding Statistics.TestsCount, StringFormat='Брой положени тестове: {0}'}" Grid.Column="1" Grid.Row="1"/>
+        <TextBlock Name="mostTestedDiscipline" Text="{Binding Statistics.MostTestedDiscipline, StringFormat='Най-тествана дисциплина: {0}'}" Grid.Column="1" Grid.Row="2"/>
+        <!--<Label Name="avgTestTimeLabel" Content="Средно време за тест: " Grid.Column="1" Grid.Row="3"/>-->
+        <Button Name="menuButton2" Content="Към меню" Command="{Binding DataContext.DisplayTestSetupViewNoLogin, RelativeSource=
+    {RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2"/>
+    </Grid>
+</UserControl>

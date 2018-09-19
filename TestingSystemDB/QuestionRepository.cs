@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestingSystemDB
 {
-    class QuestionRepository : TestingSystemRepository<TestingSystemModel, Question>
+    public class QuestionRepository : TestingSystemRepository<TestingSystemModel, Question>
     {
     }
 }
