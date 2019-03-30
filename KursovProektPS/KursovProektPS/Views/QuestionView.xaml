@@ -50,8 +50,8 @@
         <Label Name="answer2Label" Content="{Binding QuestionInfo.Answer2}" Grid.Row="7"  Grid.Column="2"/>
         <RadioButton Name="answer3RadioButton" Command="{Binding SelectAnswer}" CommandParameter="3" Margin="5" Grid.Row="8" Grid.Column="1"/>
         <Label Name="answer3Label" Content="{Binding QuestionInfo.Answer3}" Grid.Row="8"  Grid.Column="2"/>
-        <Button Name="nextQuestButton" Content="Следващ Въпрос" Command="{Binding SubmitAnswerCommand}" Grid.Row="1" Grid.Column="4" Visibility="{Binding IsNextQuestionButtonVisible, Converter={StaticResource BoolToVis}}"/>
+        <Button Name="nextQuestButton" Content="Следващ Въпрос" Command="{Binding SubmitAnswerCommand}" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Visibility="{Binding IsNextQuestionButtonVisible, Converter={StaticResource BoolToVis}}"/>
         <Button Name="ResultsButton" Content="Резултати" Command="{Binding DataContext.DisplayResultsView, RelativeSource=
-    {RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}" CommandParameter="{Binding TestScore}" Grid.Row="1" Grid.Column="4" Visibility="{Binding IsViewResultsButtonVisible, Converter={StaticResource BoolToVis}}"/>
+    {RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}" CommandParameter="{Binding TestScore}" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Visibility="{Binding IsViewResultsButtonVisible, Converter={StaticResource BoolToVis}}"/>
     </Grid>
 </UserControl>
