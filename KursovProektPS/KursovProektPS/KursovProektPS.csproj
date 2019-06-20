@@ -112,6 +112,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AuthenticatorVM.cs" />
+    <Compile Include="BoundPasswordBox.cs" />
     <Compile Include="MainWindowVM.cs" />
     <Compile Include="QuestionVM.cs" />
     <Compile Include="Randomizer.cs" />

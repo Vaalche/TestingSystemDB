@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using TestingSystemDB;
 
@@ -12,6 +13,7 @@ namespace KursovProektPS
     {
         public BaseVM Authenticate(LoginModel loginInfo)
         {
+            loginInfo.Password = BoundPasswordBox.Password;
             IRepository<User> userRepository = RepositoryFactory.Get<User>();
             User userInDB = null;
             using (var ctx = new TestingSystemModel())
