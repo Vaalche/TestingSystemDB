@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KursovProektPS", "KursovProektPS\KursovProektPS.csproj", "{4F527D10-D288-452D-82D0-1DF4427F20E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingSystemDB", "..\TestingSystemDB\TestingSystemDB.csproj", "{C430DFC4-73CA-4FD2-82BC-AF8C15F2578C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4F527D10-D288-452D-82D0-1DF4427F20E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F527D10-D288-452D-82D0-1DF4427F20E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F527D10-D288-452D-82D0-1DF4427F20E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C430DFC4-73CA-4FD2-82BC-AF8C15F2578C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C430DFC4-73CA-4FD2-82BC-AF8C15F2578C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C430DFC4-73CA-4FD2-82BC-AF8C15F2578C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C430DFC4-73CA-4FD2-82BC-AF8C15F2578C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

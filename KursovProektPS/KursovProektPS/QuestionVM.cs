@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 using TestingSystemDB;
 
 namespace KursovProektPS
@@ -15,20 +15,45 @@ namespace KursovProektPS
         private int testScore = 0;
         private bool questionsExtractedFlag = false;
         private int questionCounter = 0;
+        private DateTime stopwatch = DateTime.MinValue;
+        private DispatcherTimer timer;
 
         private bool isNextQuestionButtonVisible = true;
         private bool isViewResultsButtonVisible = false;
 
-        public QuestionVM()
-        {
-            questionInfo = new QuestionModel();
-        }
-
         public QuestionVM(TestSetupModel info)
         {
+            timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 0, 1, 0);
+            timer.Tick += Timer_Tick;
+            timer.Start();
+            resourceName = "question";
             questionInfo = new QuestionModel();
             selectionID = info.Selection.id;
         }
+
+        ~QuestionVM()
+        {
+            timer.Tick -= Timer_Tick;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            Application.Current.Dispatcher.Invoke(()=>
+            {
+                stopwatch = stopwatch.AddSeconds(1);
+                this.RaisePropertyChanged("TimerValue");
+            },DispatcherPriority.ContextIdle);
+        }
+
+        public DateTime TimerValue
+        {
+            get
+            {
+                return stopwatch;
+            }
+        }
+
 
         public QuestionModel QuestionInfo
         {

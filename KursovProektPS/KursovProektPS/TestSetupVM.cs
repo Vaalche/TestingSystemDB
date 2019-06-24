@@ -25,6 +25,7 @@ namespace KursovProektPS
 
         public TestSetupVM()
         {
+            resourceName = "setup";
             TSInfo = new TestSetupModel();
             TSInfo.Disciplines = PopulateComboBox();
         }

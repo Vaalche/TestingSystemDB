@@ -16,7 +16,6 @@ namespace KursovProektPS
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
             var window = new MainWindow() { DataContext = new MainWindowVM() };
             window.Show();
         }

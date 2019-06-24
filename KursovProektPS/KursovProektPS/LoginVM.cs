@@ -15,6 +15,7 @@ namespace KursovProektPS
 
         public LoginVM()
         {
+            resourceName = "login";
             LoginInfo = new LoginModel();
         }
 

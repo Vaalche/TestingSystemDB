@@ -8,10 +8,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     
-    <UserControl.DataContext>
-        <vm:StatisticsVM/>
-    </UserControl.DataContext>
-    
     <Grid Name="statisticsGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

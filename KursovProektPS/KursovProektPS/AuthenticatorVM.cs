@@ -9,7 +9,7 @@ using TestingSystemDB;
 
 namespace KursovProektPS
 {
-    public class Authenticator
+    public class AuthenticatorVM
     {
         public BaseVM Authenticate(LoginModel loginInfo)
         {
@@ -23,11 +23,15 @@ namespace KursovProektPS
             if (userInDB != null && userInDB.password.Equals(loginInfo.Password))
             {
                 MainWindowVM.CurrentUser = userInDB;
-                return new TestSetupVM();
+                BaseVM result = new TestSetupVM();
+                result.ResourceName = "setup";
+                return result;
             }
             else
             {
-                return new LoginVM(loginInfo);
+                BaseVM result = new LoginVM(loginInfo);
+                result.ResourceName = "login";
+                return result;
             }
         }
     }

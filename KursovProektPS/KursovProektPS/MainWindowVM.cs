@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using TestingSystemDB;
 
 namespace KursovProektPS
@@ -17,6 +12,9 @@ namespace KursovProektPS
             ViewModel = new LoginVM();
         }
 
+        //private string viewName;
+        public string ViewTemplateResource { get; set; }
+
         public BaseVM ViewModel
         {
             get
@@ -25,8 +23,11 @@ namespace KursovProektPS
             }
 
             private set
-            {
+            { 
+                ViewTemplateResource = value.ResourceName;
+                RaisePropertyChanged("ViewTemplateResource");
                 _viewModel = value;
+
                 RaisePropertyChanged("ViewModel");
             }
         }
@@ -35,7 +36,7 @@ namespace KursovProektPS
         {
             get
             {
-                return new RelayCommand(param => ViewModel = new ResultsVM((int) param));
+                return new RelayCommand(param => ViewModel = new ResultsVM((int)param));
             }
         }
 
@@ -43,7 +44,7 @@ namespace KursovProektPS
         {
             get
             {
-                return new RelayCommand(param => ViewModel = new Authenticator().Authenticate((LoginModel)param));
+                return new RelayCommand(param => ViewModel = new AuthenticatorVM().Authenticate((LoginModel)param));
             }
         }
 
@@ -54,7 +55,7 @@ namespace KursovProektPS
                 return new RelayCommand(param => ViewModel = new TestSetupVM());
             }
         }
-        
+
         public ICommand DisplayStatisticsView
         {
             get
@@ -75,7 +76,7 @@ namespace KursovProektPS
         {
             get
             {
-                return new RelayCommand(param => ViewModel = new QuestionVM((TestSetupModel) param));
+                return new RelayCommand(param => ViewModel = new QuestionVM((TestSetupModel)param));
             }
         }
     }

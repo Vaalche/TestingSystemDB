@@ -9,6 +9,7 @@ namespace KursovProektPS
 {
     public class BaseVM : INotifyPropertyChanged
     {
+        protected string resourceName;
         protected void RaisePropertyChanged(string propertyName)
         {
             var handler = PropertyChanged;
@@ -20,6 +21,19 @@ namespace KursovProektPS
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public string ResourceName
+        {
+            get
+            {
+                return resourceName;
+            }
+            set
+            {
+                this.resourceName = value;
+                RaisePropertyChanged("ResourceName");
+            }
+        }
     }
 }
 

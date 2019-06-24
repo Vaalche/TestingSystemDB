@@ -10,14 +10,14 @@ namespace KursovProektPS
     {
         public static int TestScore { get; set; }
 
-
         public ResultsVM()
         {
-
+            resourceName = "results";
         }
 
         public ResultsVM(int testScore)
         {
+            resourceName = "results";
             TestScore = testScore;
         }
 

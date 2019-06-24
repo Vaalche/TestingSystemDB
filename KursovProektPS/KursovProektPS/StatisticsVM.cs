@@ -28,6 +28,7 @@ namespace KursovProektPS
         public StatisticsVM()
         {
             statistics = new StatisticsModel();
+            ResourceName = "statistics";
             GetStatisticsForLoggedUser();
         }
 
