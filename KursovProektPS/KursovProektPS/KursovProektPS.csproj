@@ -129,6 +129,7 @@
     <Compile Include="StatisticsVM.cs" />
     <Compile Include="TestSetupModel.cs" />
     <Compile Include="TestSetupVM.cs" />
+    <Compile Include="ViewModels\AddQuestionViewModel.cs" />
     <Compile Include="Views\AddQuestionView.xaml.cs">
       <DependentUpon>AddQuestionView.xaml</DependentUpon>
     </Compile>
