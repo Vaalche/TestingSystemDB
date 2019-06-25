@@ -9,6 +9,8 @@ namespace KursovProektPS
     {
         private string _username;
         private string _password;
+        private string _errMsg;
+
         public string Username
         {
             get
@@ -33,6 +35,20 @@ namespace KursovProektPS
             {
                 _password = value;
                 RaisePropertyChanged("Password");
+            }
+
+        }
+
+        public string ErrMsg
+        {
+            get
+            {
+                return _errMsg;
+            }
+            set
+            {
+                _errMsg = value;
+                RaisePropertyChanged("ErrMsg");
             }
 
         }

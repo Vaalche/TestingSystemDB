@@ -22,13 +22,22 @@ namespace KursovProektPS
 
         public QuestionVM(TestSetupModel info)
         {
-            timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 0, 1, 0);
-            timer.Tick += Timer_Tick;
-            timer.Start();
-            resourceName = "question";
-            questionInfo = new QuestionModel();
-            selectionID = info.Selection.id;
+            try
+            {
+                selectionID = info.Selection.id;
+                timer = new DispatcherTimer();
+                timer.Interval = new TimeSpan(0, 0, 0, 1, 0);
+                timer.Tick += Timer_Tick;
+                timer.Start();
+                resourceName = "question";
+                questionInfo = new QuestionModel();
+            }
+            catch
+            {
+                resourceName = "setup";
+                var ts = new TestSetupVM();
+                return;
+            }        
         }
 
         ~QuestionVM()

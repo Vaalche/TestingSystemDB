@@ -13,6 +13,8 @@ namespace KursovProektPS
     {
         private LoginModel _loginInfo;
 
+        private string _errorMessage;
+
         public LoginVM()
         {
             resourceName = "login";
@@ -22,6 +24,13 @@ namespace KursovProektPS
         public LoginVM(LoginModel loginInfo)
         {
             LoginInfo = loginInfo;
+        }
+
+        public LoginVM(LoginModel loginInfo, string errMsg)
+        {
+            resourceName = "login";
+            LoginInfo = loginInfo;
+            loginInfo.ErrMsg = errMsg;
         }
 
         public LoginModel LoginInfo
@@ -37,5 +46,19 @@ namespace KursovProektPS
                 RaisePropertyChanged("LoginInfo");
             }
         }
+
+        //public string ErrorMessage
+        //{
+        //    get
+        //    {
+        //        return _errorMessage;
+        //    }
+
+        //    set
+        //    {
+        //        _errorMessage = value;
+        //        RaisePropertyChanged("ErrorMessageLogin");
+        //    }
+        //}
     }
 }

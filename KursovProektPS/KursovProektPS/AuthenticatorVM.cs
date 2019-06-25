@@ -23,7 +23,7 @@ namespace KursovProektPS
             }
             else
             {
-                BaseVM result = new LoginVM(loginInfo);
+                BaseVM result = new LoginVM(loginInfo, "Проблем с автентикацията на потребителя!!!");
                 result.ResourceName = "login";
                 return result;
             }

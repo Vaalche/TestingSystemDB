@@ -30,5 +30,6 @@
         <PasswordBox x:Name="PasswordBox" vm:BoundPasswordBox.BindPassword="true"  vm:BoundPasswordBox.BoundPassword="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="2" Margin="2"/>
         <Button IsDefault="True" Name="loginButton" Command="{Binding DataContext.DisplayTestSetupView, RelativeSource=
     {RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}" CommandParameter="{Binding LoginInfo}" Grid.Column="1" Margin="20" Content="Login"  Grid.Row="3" Grid.ColumnSpan="2" />
+        <TextBlock Text="{Binding LoginInfo.ErrMsg}" FontSize="15" Foreground="Red" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2"/>
     </Grid>
 </UserControl>
