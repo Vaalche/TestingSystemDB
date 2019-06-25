@@ -43,6 +43,11 @@
                                 <Setter Property="ContentTemplate" Value="{DynamicResource statistics}"/>
                             </DataTrigger.Setters>
                         </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=ViewTemplateResource}" Value="add">
+                            <DataTrigger.Setters>
+                                <Setter Property="ContentTemplate" Value="{DynamicResource add}"/>
+                            </DataTrigger.Setters>
+                        </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </ContentControl.Style>

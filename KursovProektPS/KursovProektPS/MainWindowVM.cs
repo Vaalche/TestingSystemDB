@@ -76,7 +76,15 @@ namespace KursovProektPS
         {
             get
             {
-                return new RelayCommand(param => ViewModel = new QuestionVM((TestSetupModel)param));
+                return new RelayCommand(param => { if (param != null) ViewModel = new QuestionVM((TestSetupModel)param); });
+            }
+        }
+
+        public ICommand DisplayAddQuestionView
+        {
+            get
+            {
+                return new RelayCommand(param => ViewModel = new AddQuestionVM());
             }
         }
     }
