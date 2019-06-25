@@ -12,10 +12,9 @@ namespace KursovProektPS
     {
         private QuestionModel questionInfo;
         private static int selectionID;
-        private int testScore = 0;
+        private ResultsModel results = new ResultsModel();
         private bool questionsExtractedFlag = false;
         private int questionCounter = 0;
-        private DateTime stopwatch = DateTime.MinValue;
         private DispatcherTimer timer;
 
         private bool isNextQuestionButtonVisible = true;
@@ -41,7 +40,7 @@ namespace KursovProektPS
         {
             Application.Current.Dispatcher.Invoke(()=>
             {
-                stopwatch = stopwatch.AddSeconds(1);
+                results.TestTime = results.TestTime.AddSeconds(1);
                 this.RaisePropertyChanged("TimerValue");
             },DispatcherPriority.ContextIdle);
         }
@@ -50,7 +49,7 @@ namespace KursovProektPS
         {
             get
             {
-                return stopwatch;
+                return results.TestTime;
             }
         }
 
@@ -121,17 +120,16 @@ namespace KursovProektPS
             }
         }
 
-        public int TestScore
+        public ResultsModel Results
         {
             get
             {
-                return testScore;
+                return results;
             }
 
             set
             {
-                testScore = value;
-                RaisePropertyChanged("TestScore");
+                results = value;
             }
         }
 
@@ -192,23 +190,19 @@ namespace KursovProektPS
 
             if(answerString != null && answerString.Equals(QuestionInfo.CurrentQuestion.correct_answer))
             {
-                TestScore ++;
+                results.TestScore++;
             }
-            if (questionCounter == 5)
+            if (questionCounter == 4)
             {
                 IsNextQuestionButtonVisible = false;
                 IsViewResultsButtonVisible = true;
-                SubmitTest();
             }
-            else
-            {
-                SelectQuestion();
-            }
-
+            SelectQuestion();
         }
 
-        private void SubmitTest()
+        public int SubmitTest()
         {
+            int testId;
             using (var ctx = new TestingSystemModel())
             {
                 IRepository<Test> testRepository = RepositoryFactory.Get<Test>();
@@ -221,9 +215,17 @@ namespace KursovProektPS
                     ctx.Questions.Attach(q);
                 }
                 newTest.user_id = MainWindowVM.CurrentUser.id;
-                newTest.score = TestScore;
+                newTest.score = results.TestScore;
                 testRepository.Add(newTest, ctx);
+
+
+
+                testId = testRepository.FindBy(test => test.user_id == newTest.user_id, ctx).OrderByDescending(test => test.id).FirstOrDefault().id;
             }
+
+            timer.Stop();
+
+            return testId;
         }
     }
 }

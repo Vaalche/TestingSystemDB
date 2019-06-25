@@ -22,10 +22,12 @@
             <RowDefinition Height="0.3*"/>
             <RowDefinition Height="0.7*"/>
         </Grid.RowDefinitions>
-        <TextBlock Name="noCorrectAnswersLabel" Text="{Binding TestScore, StringFormat='Брой верни отговори: {0}'}" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"/>
+        <TextBlock x:Name="noCorrectAnswersLabel" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"/>
+        <TextBlock Name="testTimeLabel" Text="{Binding TestResults.TestTime, StringFormat='Време: mm:ss'}" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2"/>
         <Button Name="takeNewTestButton" Command="{Binding DataContext.DisplayTestSetupViewNoLogin, RelativeSource=
     {RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}" Content="Нов Тест" Grid.Column="1" Grid.Row="3"/>
         <Button Name="menuButton" Command="{Binding DataContext.DisplayStatisticsView, RelativeSource=
     {RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}" Content="Статистика" Grid.Column="3" Grid.Row="3"/>
+        <Button x:Name="printTestButton" Command="{Binding PrintTestCommand}" CommandParameter="{Binding TestResults.TestID}" Content="Печат на теста" Grid.Column="2" Margin="19,0,16,0" Grid.Row="3"/>
     </Grid>
 </UserControl>

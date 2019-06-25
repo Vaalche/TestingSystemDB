@@ -36,7 +36,13 @@ namespace KursovProektPS
         {
             get
             {
-                return new RelayCommand(param => ViewModel = new ResultsVM((int)param));
+                return new RelayCommand(param =>
+                {
+                    
+                    ResultsModel model = (ResultsModel)param;
+                    model.TestID = ((QuestionVM)ViewModel).SubmitTest();
+                    ViewModel = new ResultsVM((ResultsModel)param);
+                });
             }
         }
 

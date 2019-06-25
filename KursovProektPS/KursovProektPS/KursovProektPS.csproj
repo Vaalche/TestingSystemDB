@@ -121,7 +121,9 @@
     <Compile Include="AuthenticatorVM.cs" />
     <Compile Include="BoundPasswordBox.cs" />
     <Compile Include="Converters\ResourceNavigator.cs" />
+    <Compile Include="IPrintingService.cs" />
     <Compile Include="MainWindowVM.cs" />
+    <Compile Include="PrintingService.cs" />
     <Compile Include="QuestionVM.cs" />
     <Compile Include="Randomizer.cs" />
     <Compile Include="RelayCommand.cs" />
@@ -129,6 +131,7 @@
     <Compile Include="BaseVM.cs" />
     <Compile Include="StatisticsModel.cs" />
     <Compile Include="StatisticsVM.cs" />
+    <Compile Include="ResultsModel.cs" />
     <Compile Include="TestSetupModel.cs" />
     <Compile Include="TestSetupVM.cs" />
     <Compile Include="ViewModels\AddQuestionViewModel.cs" />

@@ -39,5 +39,19 @@ namespace TestingSystemDB
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Test> tests { get; set; }
+
+
+        public override string ToString()
+        {
+            if (is_free_text == false)
+            {
+                return question_text + "\n" + "1. " + correct_answer + "\n" + "2. " + incorrect_answer1 + "\n" + "3. " + incorrect_answer2;
+
+            }
+            else
+            {
+                return question_text;
+            }
+        }
     }
 }
