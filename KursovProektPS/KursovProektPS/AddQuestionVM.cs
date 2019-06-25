@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 using TestingSystemDB;
 
 namespace KursovProektPS
@@ -11,7 +13,6 @@ namespace KursovProektPS
     class AddQuestionVM : BaseVM
     {
         private AddQuestionModel addQuestionInfo;
-        private List<Question> toSave = new List<Question>();
 
         public AddQuestionVM()
         {
@@ -42,14 +43,6 @@ namespace KursovProektPS
             }
         }
 
-        public ICommand SaveQuestionCommand
-        {
-            get
-            {
-                return new RelayCommand(param => SaveQuestions());
-            }
-        }
-
         private List<Discipline> PopulateComboBox()
         {
             IRepository<Discipline> disciplineRepository = RepositoryFactory.Get<Discipline>();
@@ -62,42 +55,32 @@ namespace KursovProektPS
 
         private void FillQuestion()
         {
-            Question question = new Question();
-
-            if(AddQuestionInfo.CurrentQuestion.question_text != string.Empty)
-            {
-                question.question_text = AddQuestionInfo.CurrentQuestion.question_text;
-            }
-
-            if (AddQuestionInfo.CurrentQuestion.correct_answer != string.Empty)
-            {
-                question.correct_answer = AddQuestionInfo.CurrentQuestion.correct_answer;
-            }
-
-            if (AddQuestionInfo.CurrentQuestion.incorrect_answer1 != string.Empty)
-            {
-                question.incorrect_answer1 = AddQuestionInfo.CurrentQuestion.incorrect_answer1;
-            }
-
-            if (AddQuestionInfo.CurrentQuestion.incorrect_answer2 != string.Empty)
-            {
-                question.incorrect_answer2 = AddQuestionInfo.CurrentQuestion.incorrect_answer2;
-            }
-
-            if (AddQuestionInfo.CurrentQuestion.discipline != null)
-            {
-                question.discipline = AddQuestionInfo.CurrentQuestion.discipline;
-            }
-
-            toSave.Add(question);
+            AddQuestionInfo.AddQuestion();
         }
 
-        private void SaveQuestions()
+        public void SaveQuestions()
         {
-            foreach(Question q in toSave)
+            IRepository<Question> questionRepository = RepositoryFactory.Get<Question>();
+            using (var ctx = new TestingSystemModel())
             {
-
+                foreach (UnsavedQuestion u in AddQuestionInfo.Questions)
+                {
+                    ctx.Disciplines.Attach(u.SelectedDiscipline);
+                    questionRepository.Add(ConvertToQuestion(u), ctx);
+                }
             }
+        }
+
+        private Question ConvertToQuestion(UnsavedQuestion unsaved)
+        {
+            Question q = new Question();
+            q.question_text = unsaved.QuestionText;
+            q.correct_answer = unsaved.CorrectAnswer;
+            q.incorrect_answer1 = unsaved.FirstWrongAnswer;
+            q.incorrect_answer2 = unsaved.SecondWrongAnswer;
+            q.discipline = unsaved.SelectedDiscipline;
+            q.is_free_text = false;
+            return q;
         }
     }
 }

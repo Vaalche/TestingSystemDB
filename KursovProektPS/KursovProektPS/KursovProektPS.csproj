@@ -134,6 +134,7 @@
     <Compile Include="ResultsModel.cs" />
     <Compile Include="TestSetupModel.cs" />
     <Compile Include="TestSetupVM.cs" />
+    <Compile Include="UnsavedQuestion.cs" />
     <Compile Include="ViewModels\AddQuestionViewModel.cs" />
     <Compile Include="Views\AddQuestionView.xaml.cs">
       <DependentUpon>AddQuestionView.xaml</DependentUpon>

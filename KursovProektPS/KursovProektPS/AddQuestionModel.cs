@@ -5,32 +5,93 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using TestingSystemDB;
+using System.Windows;
+using System.Windows.Threading;
+using System.Collections.ObjectModel;
 
 namespace KursovProektPS
 {
     class AddQuestionModel : INotifyPropertyChanged
     {
-        private List<Question> questions = new List<Question>();
-        private Question question = new Question();
-        private string correctAnswer;
-        private string wrongAnswer1;
-        private string wrongAnswer2;
-        private Discipline discipline;
+        private ObservableCollection<UnsavedQuestion> questions = new ObservableCollection<UnsavedQuestion>();
         private List<Discipline> disciplines;
+        private string questionText;
+        private string correctAnswer;
+        private string firstWrongAnswer;
+        private string secondWrongAnswer;
+        private Discipline selectedDiscipline;
 
-        public Discipline Discipline
+        public string QuestionText
         {
             get
             {
-                return discipline;
+                return questionText;
             }
 
             set
             {
-                discipline = value;
-                RaisePropertyChanged("Discipline");
+                questionText = value;
+                RaisePropertyChanged("QuestionText");
             }
         }
+
+        public string CorrectAnswer
+        {
+            get
+            {
+                return correctAnswer;
+            }
+
+            set
+            {
+                correctAnswer = value;
+                RaisePropertyChanged("CorrectAnswer");
+            }
+        }
+
+        public string FirstWrongAnswer
+        {
+            get
+            {
+                return firstWrongAnswer;
+            }
+
+            set
+            {
+                firstWrongAnswer = value;
+                RaisePropertyChanged("FirstWrongAnswer");
+            }
+        }
+
+        public string SecondWrongAnswer
+        {
+            get
+            {
+                return secondWrongAnswer;
+            }
+
+            set
+            {
+                secondWrongAnswer = value;
+                RaisePropertyChanged("SecondWrongAnswer");
+            }
+        }
+
+        public Discipline SelectedDiscipline
+        {
+            get
+            {
+                return selectedDiscipline;
+            }
+
+            set
+            {
+                selectedDiscipline = value;
+                RaisePropertyChanged("SelectedDiscipline");
+            }
+        }
+
+
 
         public List<Discipline> Disciplines
         {
@@ -46,7 +107,7 @@ namespace KursovProektPS
             }
         }
 
-        public List<Question> Questions
+        public ObservableCollection<UnsavedQuestion> Questions
         {
             get
             {
@@ -60,60 +121,18 @@ namespace KursovProektPS
             }
         }
 
-        public Question CurrentQuestion
+
+        public ObservableCollection<UnsavedQuestion> AddQuestion()
         {
-            get
-            {
-                return question;
-            }
+            UnsavedQuestion q = new UnsavedQuestion();
+            q.QuestionText = QuestionText;
+            q.CorrectAnswer = CorrectAnswer;
+            q.FirstWrongAnswer = FirstWrongAnswer;
+            q.SecondWrongAnswer = SecondWrongAnswer;
+            q.SelectedDiscipline = SelectedDiscipline;
 
-            set
-            {
-                question = value;
-                RaisePropertyChanged("CurrentQuestion");
-            }
-        }
-
-        public string CorrectAnswer
-        {
-            get
-            {
-                return correctAnswer;
-            }
-
-            set
-            {
-                correctAnswer = value;
-                RaisePropertyChanged("correctAnswer");
-            }
-        }
-
-        public string WrongAnswer1
-        {
-            get
-            {
-                return wrongAnswer1;
-            }
-
-            set
-            {
-                wrongAnswer1 = value;
-                RaisePropertyChanged("wrongAnswer1");
-            }
-        }
-
-        public string WrongAnswer2
-        {
-            get
-            {
-                return wrongAnswer2;
-            }
-
-            set
-            {
-                wrongAnswer2 = value;
-                RaisePropertyChanged("wrongAnswer2");
-            }
+            Questions.Add(q);
+            return Questions;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
